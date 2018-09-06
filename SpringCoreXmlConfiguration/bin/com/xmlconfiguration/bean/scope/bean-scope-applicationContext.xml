@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:property-placeholder location="classpath:com/xmlconfiguration/bean/scope/sport.properties"/>
+   <!--Define bean here-->
+   <bean id="myFortuneService" class="com.xmlconfiguration.bean.scope.HappyFortuneService">
+   </bean>
+<!--    <bean id="myCoach" class="com.xmlconfiguration.scope.BaseballCoach" scope="singleton"> -->
+   <bean id="myCoach" class="com.xmlconfiguration.bean.scope.BaseballCoach" scope="prototype">
+   	<property name="fortuneService" ref="myFortuneService"></property>
+   	<property name="email" value="${foo.email}"/>
+   	<property name="team" value="${foo.team}"/>
+   </bean>
+
+</beans> 
